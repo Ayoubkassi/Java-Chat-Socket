@@ -30,6 +30,10 @@ public class ChatMessage {
     
     @Getter
     private String time;
+
+    public String getSender() {
+        return sender;
+    }
     
     
     
