@@ -1,1 +1,7 @@
+com/example/WebSocket/controller/ChatController.class
 com/example/WebSocket/model/ChatMessage$ChatMessageBuilder.class
+com/example/WebSocket/model/ChatMessage.class
+com/example/WebSocket/web/WebSocketMessageConfig.class
+com/example/WebSocket/model/MessageType.class
+com/example/WebSocket/WebSocketApplication.class
+com/example/WebSocket/controller/WebSocketEventListener.class
