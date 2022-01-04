@@ -12,30 +12,30 @@ import lombok.Getter;
 
 /**
  *
- * @author ryota
+ * @author KassiAyoub
  */
 
 
 @Builder
-public class ChatMessage {
-    
+public class VideoStream {
+
     @Getter
-    private MessageType type;
-    
+    private VideoType type;
+
     @Getter
     private String content;
-    
+
     @Getter
     private String sender;
-    
+
     @Getter
     private String time;
 
     public String getSender() {
         return sender;
     }
-    
-    
-    
-    
+
+
+
+
 }

@@ -5,13 +5,15 @@
 
 /**
  *
- * @author ryota
+ * @author KassiAyoub
  */
 package com.example.WebSocket.model;
 
 
-public enum MessageType {
-    CHAT,
-    CONNECT,
-    DISCONNECT
+public enum VideoType {
+    PLAY,
+    PAUSE,
+    CHANGE,
+    -10,
+    +10
 }

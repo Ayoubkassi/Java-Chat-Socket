@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.example.WebSocket.controller;
 
-import com.example.WebSocket.model.VideoStream ;
+import com.example.WebSocket.model.VideoStream;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -13,7 +10,7 @@ import org.springframework.stereotype.Controller;
 
 /**
  *
- * @author ryota
+ * @author KassiAyoub
  */
 
 @Controller
@@ -21,19 +18,25 @@ public class VideoController {
 
     @MessageMapping("/video.play")
     @SendTo("/topic/public")
-    public StreamVideo sendMessage(@Payload final ChatMessage chatMessage){
+    public StreamVideo sendMessage(@Payload final VideoStream videoStream){
+        return chatMessage;
+    }
+
+    @MessageMapping("/video.pause")
+    @SendTo("/topic/public")
+    public StreamVideo sendMessage(@Payload final VideoStream videoStream){
         return chatMessage;
     }
 
 
-    @MessageMapping("/video.pasue")
+    @MessageMapping("/video.change")
     @SendTo("/topic/public")
-    public  StreamVideo newUser(@Payload final ChatMessage chatMessage ,
+    public  StreamVideo newVideo(@Payload final VideoStream videoStream ,
             SimpMessageHeaderAccessor headerAccessor){
 
-        headerAccessor.getSessionAttributes().put("video", chatMessage.getSender());
+        headerAccessor.getSessionAttributes().put("videoid", videoStream.getID());
 
-        return chatMessage;
+        return videoStream;
 
     }
 

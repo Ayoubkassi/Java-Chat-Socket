@@ -18,40 +18,40 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
 /**
  *
- * @author ryota
+ * @author KassiAyoub
  */
 
 @Component
 public class WebSocketEventListener {
-    
-    
+
+
     private static final Logger LOGGER = LoggerFactory.getLogger(WebSocketEventListener.class);
-            
+
     @Autowired
     private SimpMessageSendingOperations sendingOperations;
-    
+
     @EventListener
     public void handleWebSocketEventListener(final SessionConnectedEvent event){
-        
-        LOGGER.info("Hey Hey and welcome again we have a new connection here");
+
+        LOGGER.info("Serveur back-end commence l'ecoute");
     }
-    
+
     @EventListener
     public void handleWebSocketDisconnectListener(final SessionDisconnectEvent event){
-        final StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
-        
-        final String username = (String) headerAccessor.getSessionAttributes().get("username");
-        
-        final ChatMessage chatMessage = ChatMessage.builder().type(MessageType.DISCONNECT)
-                .sender(username)
+        final StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getVideo());
+
+        final String id = (String) headerAccessor.getSessionAttributes().get("id");
+
+        final VideoStream videoStream = ChatMessage.builder().type(VideoType.PAUSE)
+                .sender(id)
                 .build();
-        
+
         sendingOperations.convertAndSend("/topic/public", chatMessage);
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
     }
 }
